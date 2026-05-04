@@ -6,7 +6,7 @@ class DataManager():
     def __init__(self, batch_size):
         self.b = batch_size
         self.transform = {
-            "train_transform" : transforms.Compose(
+            "train" : transforms.Compose(
                 [transforms.RandomResizedCrop(size=256, scale=(0.8, 1.0)),
                     transforms.RandomRotation(degrees=15),
                     transforms.ColorJitter(brightness=0.5),
@@ -14,12 +14,12 @@ class DataManager():
                     transforms.CenterCrop(size=224),
                     transforms.ToTensor(),
                     transforms.Normalize([0.485, 0.456, 0.406], [0.229, 0.224, 0.225])]),
-            "valid_transform" : transforms.Compose(
+            "val" : transforms.Compose(
                 [transforms.Resize(size=256),
                     transforms.CenterCrop(size=224),
                     transforms.ToTensor(),
                     transforms.Normalize([0.485, 0.456, 0.406], [0.229, 0.224, 0.225])]),
-            "test_transform" : transforms.Compose(
+            "test" : transforms.Compose(
                 [transforms.Resize(size=256),
                     transforms.CenterCrop(size=224),
                     transforms.ToTensor(),
@@ -38,9 +38,9 @@ class DataManager():
         train_dataset, val_dataset, test_dataset = random_split(dataset, [train_size, val_size, test_size])
 
         # apply transformations
-        train_dataset.dataset.transform = train_transform  # assign training transform
-        val_dataset.dataset.transform = valid_transform  # assign validation transform
-        test_dataset.dataset.transform = test_transform  # assign test transform
+        train_dataset.dataset.transform = self.transform['train']  # assign training transform
+        val_dataset.dataset.transform = self.transform['val']  # assign validation transform
+        test_dataset.dataset.transform = self.transform['test']  # assign test transform
 
         # dataloaders
         train_loader = DataLoader(DBI_train_dataset, batch_size=b, shuffle=True)
