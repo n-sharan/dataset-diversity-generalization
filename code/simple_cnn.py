@@ -1,6 +1,7 @@
 # REFERENCES
-# I looked at this code and did something similar: https://pytorch.org/tutorials/beginner/blitz/cifar10_tutorial.html
+# https://pytorch.org/tutorials/beginner/blitz/cifar10_tutorial.html
 
+import torch
 import torch.nn as nn
 import torch.nn.functional as F
 
