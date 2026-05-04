@@ -3,7 +3,7 @@ from torch.utils.data import random_split, DataLoader
 from torchvision import transforms
 
 class DataManager():
-    def __init__(self, batch_size):
+    def __init__(self, batch_size=128):
         self.b = batch_size
         self.transform = {
             "train" : transforms.Compose(
