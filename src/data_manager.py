@@ -43,8 +43,8 @@ class DataManager():
         test_dataset.dataset.transform = self.transform['test']  # assign test transform
 
         # dataloaders
-        train_loader = DataLoader(train_dataset, batch_size=b, shuffle=True)
-        val_loader = DataLoader(val_dataset, batch_size=b, shuffle=False)
-        test_loader = DataLoader(test_dataset, batch_size=b, shuffle=False)
+        train_loader = DataLoader(train_dataset, batch_size=self.b, shuffle=True)
+        val_loader = DataLoader(val_dataset, batch_size=self.b, shuffle=False)
+        test_loader = DataLoader(test_dataset, batch_size=self.b, shuffle=False)
     
         return train_loader, val_loader, test_loader
