@@ -31,7 +31,7 @@ class Trainer():
         else:
             model.eval()
 
-        optimizer = optim.Adam(cnn_wdp.parameters(), lr=lr)
+        optimizer = optim.Adam(model.parameters(), lr=lr)
         criterion = nn.CrossEntropyLoss()
 
         training_accuracies = []
